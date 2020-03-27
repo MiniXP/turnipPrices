@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_user" label="Nintendo User" max_length="40" name="x_80052_turnip_nintendo_user" type="collection">
+        <element label="Dodo Code" max_length="40" name="dodo_code" type="string"/>
+        <element label="Friend Code" max_length="40" name="friend_code" type="string"/>
+        <element label="Island Name" max_length="40" name="island_name" type="string"/>
+        <element display="true" label="Slack Name" max_length="40" name="slack_name" type="string"/>
+        <element label="Slack Team" max_length="40" name="slack_team" type="string"/>
+    </element>
+</database>

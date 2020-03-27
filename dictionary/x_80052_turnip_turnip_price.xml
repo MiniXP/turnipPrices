@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Turnip Price" max_length="40" name="x_80052_turnip_turnip_price" type="collection">
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Slack Team" max_length="40" name="slack_team" type="string"/>
+        <element label="Time" max_length="40" name="time" type="glide_date_time"/>
+        <element label="Turnip Price" max_length="40" name="turnip_price" type="integer"/>
+        <element label="User" max_length="32" name="user" reference="x_80052_turnip_nintendo_user" type="reference"/>
+        <index name="index">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

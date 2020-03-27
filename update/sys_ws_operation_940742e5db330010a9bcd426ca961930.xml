@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>*/*</consumes>
+        <consumes_customized>true</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>POST</http_method>
+        <name>Check Price</name>
+        <operation_script><![CDATA[(function process( /*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    
+	return new TurnipProcessor().processSlackRequest(request,response);
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_80052_turnip/turnip_prices/checkPrice</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/checkPrice</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>false</requires_authentication>
+        <requires_snc_internal_role>false</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>MiniXP1@gmail.com</sys_created_by>
+        <sys_created_on>2020-03-26 22:36:20</sys_created_on>
+        <sys_id>940742e5db330010a9bcd426ca961930</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>Check Price</sys_name>
+        <sys_package display_value="Turnip Prices" source="x_80052_turnip">64d60aa5db330010a9bcd426ca961912</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Turnip Prices">64d60aa5db330010a9bcd426ca961912</sys_scope>
+        <sys_update_name>sys_ws_operation_940742e5db330010a9bcd426ca961930</sys_update_name>
+        <sys_updated_by>MiniXP1@gmail.com</sys_updated_by>
+        <sys_updated_on>2020-03-27 03:00:44</sys_updated_on>
+        <web_service_definition display_value="Turnip Prices">b6e6caa5db330010a9bcd426ca9619ef</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

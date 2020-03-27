@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="" label="Turnip Price" language="en" table="x_80052_turnip_turnip_price">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>Turnip Price</label>
+            <language>en</language>
+            <name>x_80052_turnip_turnip_price</name>
+            <plural>Turnip Prices</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>MiniXP1@gmail.com</sys_created_by>
+            <sys_created_on>2020-03-27 01:13:38</sys_created_on>
+            <sys_id>9d6b6e2ddb370010a9bcd426ca961943</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Turnip Price</sys_name>
+            <sys_package display_value="Turnip Prices" source="x_80052_turnip">64d60aa5db330010a9bcd426ca961912</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Turnip Prices">64d60aa5db330010a9bcd426ca961912</sys_scope>
+            <sys_update_name>sys_documentation_x_80052_turnip_turnip_price__en</sys_update_name>
+            <sys_updated_by>MiniXP1@gmail.com</sys_updated_by>
+            <sys_updated_on>2020-03-27 01:13:38</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

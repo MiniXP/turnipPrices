@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>update</directory>
+        <documentkey>fac09b25db7b0010a9bcd426ca96190f</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_80052_turnip_turnip_price">
+    <x_80052_turnip_turnip_price action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <slack_team/>
+        <sys_created_by>guest</sys_created_by>
+        <sys_created_on>2020-03-27 03:57:01</sys_created_on>
+        <sys_id>fac09b25db7b0010a9bcd426ca96190f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>guest</sys_updated_by>
+        <sys_updated_on>2020-03-27 03:57:01</sys_updated_on>
+        <time>2020-03-27 03:57:01</time>
+        <turnip_price>61</turnip_price>
+        <user display_value="">d17d8369db3b0010a9bcd426ca961993</user>
+    </x_80052_turnip_turnip_price>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>MiniXP1@gmail.com</sys_created_by>
+        <sys_created_on>2020-03-27 04:00:32</sys_created_on>
+        <sys_id>0a91d3a5db7b0010a9bcd426ca9619f2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Created 2020-03-26 20:57:01</sys_name>
+        <sys_package display_value="Turnip Prices" source="x_80052_turnip">64d60aa5db330010a9bcd426ca961912</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Turnip Prices">64d60aa5db330010a9bcd426ca961912</sys_scope>
+        <sys_update_name>sys_metadata_link_0a91d3a5db7b0010a9bcd426ca9619f2</sys_update_name>
+        <sys_updated_by>MiniXP1@gmail.com</sys_updated_by>
+        <sys_updated_on>2020-03-27 04:00:32</sys_updated_on>
+        <tablename>x_80052_turnip_turnip_price</tablename>
+    </sys_metadata_link>
+</record_update>

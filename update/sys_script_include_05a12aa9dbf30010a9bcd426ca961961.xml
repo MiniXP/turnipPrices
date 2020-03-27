@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_80052_turnip.TurnipProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>TurnipProcessor</name>
+        <script><![CDATA[var TurnipProcessor = Class.create();
+TurnipProcessor.prototype = {
+
+    initialize: function () {
+        this.responseMessage = "";
+        this.responseType = "";
+        this.responsePayload = {};
+    },
+
+    processSlackRequest: function (request, response) {
+        var requestBody = request.body;
+        //var requestString = requestBody.dataString;
+
+        //gs.info("Slack Body: " + requestString);
+        var queryParams = request.queryParams;
+        gs.info("Slack Query: " + JSON.stringify(queryParams, null, '\t'));
+        gs.info("Slack Header: " + JSON.stringify(request.headers, null, "/t"));
+        var logQueryParams = "";
+        gs.info("logQueryParams: \n" + logQueryParams);
+
+        this.processRequest(queryParams);
+        this.createResponse();
+        response.setContentType('application/json');
+        response.setStatus(200);
+        //response.setHeader("Content-Type", "application/json");
+        var writer = response.getStreamWriter();
+        var responseString = JSON.stringify(this.responsePayload);
+        writer.writeString(responseString);
+
+        //writer.writeString("```Test String \n Test space```");
+    },
+
+    processRequest: function (requestBody) {
+        var requestBodyString = requestBody.text[0];
+        var reqArray = requestBodyString.split(" ");
+        gs.info(reqArray);
+        var action = reqArray[0];
+        if (!action) {
+            action = "price";
+        }
+        var userName = requestBody.user_name[0];
+        var slackTeam = requestBody.team_domain[0];
+        if (action && userName && slackTeam) {
+            switch (action) {
+                case "create":
+                    this.createUser(userName, reqArray, slackTeam);
+                    break;
+                case "update":
+                    this.updatePrice(userName, reqArray, slackTeam);
+                    break;
+
+                case "price":
+                    this.listPrice();
+                    break;
+                case "friendCode":
+
+                    break;
+                case "dodoCode":
+
+                    break;
+                case "islandName":
+                    this.updateIslandName(userName, reqArray);
+                    break;
+                case "help":
+                    this.sendHelp();
+                    break;
+                case "items":
+                    //this.createItemList();
+                    break;
+                default:
+                    this.listPrice();
+            }
+        }
+    },
+
+    sendHelp: function () {
+        var message = "```First time use: /turnip create 'friendCode' 'islandName'\n\n";
+        message += "Update Price: /turnip update 'price'\n\n";
+        message += "List Prices: /turnip```";
+
+        this.responseMessage = message;
+        this.responseType = "ephemeral";
+    },
+
+    createResponse: function () {
+        if (!this.responseType || !this.responseMessage) {
+            this.responseMessage = "Something broke :eyes:";
+            this.responseType = "ephemeral";
+        }
+        this.responsePayload = {
+            "response_type": this.responseType,
+            "text": this.responseMessage
+        };
+    },
+
+    createUser: function (userName, reqArray, slackTeam) {
+        var friendCode = reqArray[1];
+        var islandName = reqArray[2];
+        gs.info("Create User: " + friendCode + islandName + " |" + userName);
+        var uGr = new GlideRecord("x_80052_turnip_nintendo_user");
+        uGr.addQuery("user_name", userName);
+        uGr.query();
+        if (!uGr.next()) {
+            gs.info("Create User: inside If");
+            uGr.initialize();
+            uGr.user_name = userName;
+            uGr.slack_name = userName;
+            uGr.friend_code = friendCode;
+            uGr.island_name = islandName;
+            uGr.slack_team = slackTeam;
+            uGr.active = true;
+            if (uGr.insert()) {
+                gs.info("Create User: insert success");
+                this.responseMessage = "User: " + uGr.user_name.toString() + " created Successfully";
+                this.responseType = "ephemeral";
+            }
+        } else {
+            this.responseMessage = "User already exists";
+            this.responseType = "ephemeral";
+        }
+
+    },
+
+    updatePrice: function (userName, reqArray, slackTeam) {
+        var userID = this.getUserID(userName).sys_id.toString();
+        var newPrice = reqArray[1];
+        if (userID) {
+            gs.info("Got User");
+            var tGr = new GlideRecord("x_80052_turnip_turnip_price");
+            tGr.addQuery("user", userID);
+            tGr.addQuery("slack_team", slackTeam);
+            tGr.addActiveQuery();
+            tGr.query();
+            if (tGr.next()) {
+                gs.info("Update Existing Price");
+                tGr.turnip_price = newPrice;
+                tGr.time = new GlideDateTime();
+                tGr.update();
+                this.responseMessage = "Price updated Successfully: User " + userName + " | Current price: " + newPrice;
+                this.responseType = "in_channel";
+                return;
+            } else if (tGr.getRowCount() == 0) {
+                gs.info("Create new Price");
+                tGr.initialize();
+                tGr.active = true;
+                tGr.user = userID;
+                tGr.time = new GlideDateTime();
+                tGr.turnip_price = newPrice;
+                tGr.slack_team = slackTeam;
+                tGr.insert();
+                this.responseMessage = "Price updated Successfully: User " + userName + " | Current price: " + newPrice;
+                this.responseType = "in_channel";
+                return;
+            }
+
+            this.responseMessage = "Turnip Price failed to update";
+            this.responseType = "ephemeral";
+        }
+    },
+
+    listPrice: function () {
+        var priceListHeader = "```";
+        var priceList = "";
+        var tGr = new GlideRecord("x_80052_turnip_turnip_price");
+        tGr.addActiveQuery();
+        tGr.orderByDesc("price");
+        tGr.query();
+        while (tGr.next()) {
+            priceList += tGr.user.getDisplayValue() + " on " + tGr.user.island_name.toString() + ": ";
+            priceList += tGr.getValue("turnip_price") + " bells | ";
+            priceList += tGr.user.friend_code.toString();
+            priceList += "\n";
+        }
+        var priceListFooter = "```";
+
+        if (!priceList) {
+            priceList = "No active turnip prices.";
+        }
+        this.responseMessage = priceListHeader + priceList + priceListFooter;
+        this.responseType = "in_channel";
+
+    },
+
+    updateIslandName: function (userName, reqArray) {
+        var islandName = reqArray[1];
+        var user = this.getUserID(userName);
+        user.island_name = islandName;
+        if (user.update()) {
+            this.responseMessage = "Island name updated succesfully to: " + user.island_name;
+            this.responseType = "ephemeral";
+        }
+    },
+
+    getUserID: function (userName) {
+        var uGr = new GlideRecord("x_80052_turnip_nintendo_user");
+        uGr.addQuery("user_name", userName);
+        uGr.addActiveQuery();
+        uGr.query();
+        if (uGr.next()) {
+            return uGr;
+        } else {
+            return false;
+        }
+    },
+
+    type: 'TurnipProcessor'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>MiniXP1@gmail.com</sys_created_by>
+        <sys_created_on>2020-03-27 00:37:53</sys_created_on>
+        <sys_id>05a12aa9dbf30010a9bcd426ca961961</sys_id>
+        <sys_mod_count>101</sys_mod_count>
+        <sys_name>TurnipProcessor</sys_name>
+        <sys_package display_value="Turnip Prices" source="x_80052_turnip">64d60aa5db330010a9bcd426ca961912</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Turnip Prices">64d60aa5db330010a9bcd426ca961912</sys_scope>
+        <sys_update_name>sys_script_include_05a12aa9dbf30010a9bcd426ca961961</sys_update_name>
+        <sys_updated_by>MiniXP1@gmail.com</sys_updated_by>
+        <sys_updated_on>2020-03-27 13:26:57</sys_updated_on>
+    </sys_script_include>
+</record_update>
