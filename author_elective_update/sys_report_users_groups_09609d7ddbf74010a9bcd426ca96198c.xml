@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_report_users_groups">
+    <sys_report_users_groups action="DELETE">
+        <group_id/>
+        <report_id display_value="">81609d7ddbf74010a9bcd426ca96198c</report_id>
+        <sys_class_name>sys_report_users_groups</sys_class_name>
+        <sys_created_by>MiniXP1@gmail.com</sys_created_by>
+        <sys_created_on>2020-03-27 13:14:31</sys_created_on>
+        <sys_id>09609d7ddbf74010a9bcd426ca96198c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>81609d7ddbf74010a9bcd426ca96198c</sys_name>
+        <sys_package display_value="Turnip Prices" source="x_80052_turnip">64d60aa5db330010a9bcd426ca961912</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Turnip Prices">64d60aa5db330010a9bcd426ca961912</sys_scope>
+        <sys_update_name>sys_report_users_groups_09609d7ddbf74010a9bcd426ca96198c</sys_update_name>
+        <sys_updated_by>MiniXP1@gmail.com</sys_updated_by>
+        <sys_updated_on>2020-03-27 13:14:31</sys_updated_on>
+        <user_id display_value="Tommy LaMonte">6816f79cc0a8016401c5a33be04be441</user_id>
+    </sys_report_users_groups>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Turnip Prices">64d60aa5db330010a9bcd426ca961912</application>
+        <file_path/>
+        <instance_id>5cfe29c1db0e1f004c1ff70fbf961930</instance_id>
+        <instance_name>dev59084</instance_name>
+        <name>sys_report_users_groups_09609d7ddbf74010a9bcd426ca96198c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_report_users_groups"><sys_report_users_groups action="INSERT_OR_UPDATE"><group_id/><report_id display_value="">81609d7ddbf74010a9bcd426ca96198c</report_id><sys_class_name>sys_report_users_groups</sys_class_name><sys_created_by>MiniXP1@gmail.com</sys_created_by><sys_created_on>2020-03-27 13:14:31</sys_created_on><sys_id>09609d7ddbf74010a9bcd426ca96198c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>81609d7ddbf74010a9bcd426ca96198c</sys_name><sys_package display_value="Turnip Prices" source="x_80052_turnip">64d60aa5db330010a9bcd426ca961912</sys_package><sys_policy/><sys_scope display_value="Turnip Prices">64d60aa5db330010a9bcd426ca961912</sys_scope><sys_update_name>sys_report_users_groups_09609d7ddbf74010a9bcd426ca96198c</sys_update_name><sys_updated_by>MiniXP1@gmail.com</sys_updated_by><sys_updated_on>2020-03-27 13:14:31</sys_updated_on><user_id display_value="Tommy LaMonte">6816f79cc0a8016401c5a33be04be441</user_id></sys_report_users_groups></record_update>]]></payload>
+        <payload_hash>-546987748</payload_hash>
+        <record_name>81609d7ddbf74010a9bcd426ca96198c</record_name>
+        <reverted_from/>
+        <source>68d60aa5db330010a9bcd426ca961914</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>MiniXP1@gmail.com</sys_created_by>
+        <sys_created_on>2020-03-27 13:14:31</sys_created_on>
+        <sys_id>056059bddbf74010a9bcd426ca9619a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1711c2138450000001</sys_recorded_at>
+        <sys_updated_by>MiniXP1@gmail.com</sys_updated_by>
+        <sys_updated_on>2020-03-27 13:14:31</sys_updated_on>
+        <type>Report Users and Groups</type>
+        <update_guid>0d6059bd3df74010452e87a4c1ae58a2</update_guid>
+        <update_guid_history>0d6059bd3df74010452e87a4c1ae58a2:-546987748</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>MiniXP1@gmail.com</sys_created_by>
+        <sys_created_on>2020-03-31 14:00:32</sys_created_on>
+        <sys_db_object display_value="" name="sys_report_users_groups">sys_report_users_groups</sys_db_object>
+        <sys_id>b0433c211bab450c9db6d9c627947a44</sys_id>
+        <sys_metadata>09609d7ddbf74010a9bcd426ca96198c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>81609d7ddbf74010a9bcd426ca96198c</sys_name>
+        <sys_package display_value="Turnip Prices" source="x_80052_turnip">64d60aa5db330010a9bcd426ca961912</sys_package>
+        <sys_parent display_value="Turnip Prices">81609d7ddbf74010a9bcd426ca96198c</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Turnip Prices">64d60aa5db330010a9bcd426ca961912</sys_scope>
+        <sys_scope_delete display_value="">0e0b82d8f6bd44d6814436f11c11fe84</sys_scope_delete>
+        <sys_update_name>sys_report_users_groups_09609d7ddbf74010a9bcd426ca96198c</sys_update_name>
+        <sys_update_version display_value="sys_report_users_groups_09609d7ddbf74010a9bcd426ca96198c">056059bddbf74010a9bcd426ca9619a3</sys_update_version>
+        <sys_updated_by>MiniXP1@gmail.com</sys_updated_by>
+        <sys_updated_on>2020-03-31 14:00:32</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
